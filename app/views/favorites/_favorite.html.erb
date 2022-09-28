@@ -1,0 +1,13 @@
+<% unless current_user == @blog.user %>
+  <% if @favorite.present? %>
+    <%= link_to favorite_path(id: @favorite.id, blog_id: @blog.id), method: :delete, class:"heart", remote: true do %>
+    <i class="fas fa-heart fa-lg"></i>
+    <% end %>
+    Dislike
+  <% else %>
+    <%= link_to favorites_path(blog_id: @blog.id), method: :post, class:"heart", remote: true do %>
+      <i class="far fa-heart fa-lg"></i>
+    <% end %>
+    Like
+  <% end %>
+<% end %>

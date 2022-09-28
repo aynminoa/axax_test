@@ -4,11 +4,15 @@ class BlogsController < ApplicationController
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
+    # blog = Blog.where(user_id: @user.id)
+    # @favorite = current_user.favorites.find_by(blog_id: current_user.blogs.id)
   end
 
   # GET /blogs/1 or /blogs/1.json
   def show
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @comments = @blog.comments
+    @comment = @blog.comments.build
 
   end
 
